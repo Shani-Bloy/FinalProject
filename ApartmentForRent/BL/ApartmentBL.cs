@@ -49,5 +49,9 @@ namespace BL
         {
             new Dal.ApartmentDAL().PostNewApartment(Converters.ApartmentConverter.GetApartmentFromDTO(apartment));
         }
+        public void printAll()
+        {
+            Console.WriteLine("hello every one!");
+        }
     }
 }
