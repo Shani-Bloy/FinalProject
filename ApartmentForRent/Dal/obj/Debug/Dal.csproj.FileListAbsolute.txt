@@ -81,3 +81,15 @@ D:\פרויקט גמר\ApartmentForRent\ApartmentForRent\Dal\obj\Debug\DAL.cspro
 D:\פרויקט גמר\ApartmentForRent\ApartmentForRent\Dal\obj\Debug\DAL.csproj.CopyComplete
 D:\פרויקט גמר\ApartmentForRent\ApartmentForRent\Dal\obj\Debug\Dal.dll
 D:\פרויקט גמר\ApartmentForRent\ApartmentForRent\Dal\obj\Debug\Dal.pdb
+D:\FinalProject\ApartmentForRent\Dal\bin\Debug\Dal.dll.config
+D:\FinalProject\ApartmentForRent\Dal\bin\Debug\Dal.dll
+D:\FinalProject\ApartmentForRent\Dal\bin\Debug\Dal.pdb
+D:\FinalProject\ApartmentForRent\Dal\bin\Debug\EntityFramework.dll
+D:\FinalProject\ApartmentForRent\Dal\bin\Debug\EntityFramework.SqlServer.dll
+D:\FinalProject\ApartmentForRent\Dal\bin\Debug\EntityFramework.xml
+D:\FinalProject\ApartmentForRent\Dal\bin\Debug\EntityFramework.SqlServer.xml
+D:\FinalProject\ApartmentForRent\Dal\obj\Debug\DAL.csprojAssemblyReference.cache
+D:\FinalProject\ApartmentForRent\Dal\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\FinalProject\ApartmentForRent\Dal\obj\Debug\DAL.csproj.CopyComplete
+D:\FinalProject\ApartmentForRent\Dal\obj\Debug\Dal.dll
+D:\FinalProject\ApartmentForRent\Dal\obj\Debug\Dal.pdb

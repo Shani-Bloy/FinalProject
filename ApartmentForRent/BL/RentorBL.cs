@@ -35,6 +35,9 @@ namespace BL
         {
            return new Dal.RentorDal().login(Converters.RentorConverter.GetUserFromDto(userName, password));
         }
-
+        public void print()
+        {
+            Console.WriteLine("hello world!!!!");
+        }
     }
 }
