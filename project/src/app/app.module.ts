@@ -25,6 +25,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { AddApartmentComponent } from './components/add-apartment/add-apartment.component';
 import { UpdateApartmentComponent } from './components/update-apartment/update-apartment.component';
+import { ApartmentsComponent } from './components/apartments/apartments.component';
 
 
 
@@ -54,6 +55,7 @@ const MATERIAL_MODULES = [
     HeaderComponent,
     AddApartmentComponent,
     UpdateApartmentComponent,
+    ApartmentsComponent,
   ],
   imports: [
     BrowserModule,

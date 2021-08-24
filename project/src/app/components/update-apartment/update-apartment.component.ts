@@ -4,6 +4,7 @@ import { RentorService } from 'src/app/services/rentor.service';
 import { ApartmentService } from 'src/app/services/apartment.service';
 import { AsyncScheduler } from 'rxjs/internal/scheduler/AsyncScheduler';
 import { apartment } from 'src/app/models/apartment';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-update-apartment',
@@ -13,18 +14,24 @@ import { apartment } from 'src/app/models/apartment';
 export class UpdateApartmentComponent implements OnInit {
   apartments: any;
   rentor: any;
-  constructor(private apartmentService: ApartmentService, private rentorService: RentorService,) { }
+  apartment: any;
+
+  constructor(private apartmentService: ApartmentService,private activatedRoute: ActivatedRoute, private rentorService: RentorService,) { }
 
   ngOnInit(): void {
-    this.rentor = this.rentorService.rentorLogin;
-    this.updateApartment();
+    this.activatedRoute.url.subscribe(url => {
+      this.update();
+    })
   }
 
-  updateApartment() {
-    this.apartmentService.getRentorApartments(this.rentor.IdRentor)
-      .subscribe((apartments: any) => this.apartments = apartments);
+  // updateApartment() {
+  //   this.apartmentService.getRentorApartments(this.rentor.IdRentor)
+  //     .subscribe((apartments: any) => this.apartments = apartments);
+  // }
+  
+  update() {
+    const id = +this.activatedRoute.snapshot.paramMap.get('id');
+    this.apartmentService.getApartment(id).
+    subscribe((apartment) => this.apartment = apartment);
   }
-
-
-
 }

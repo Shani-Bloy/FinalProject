@@ -28,6 +28,10 @@ export class ApartmentService {
     return this.http.get(`${this.ApartmentUrl}/GetApartmentDetails/${id}`);
   }
 
+  getApartment(id:number) {
+    return this.http.get(`${this.ApartmentUrl}/GetApartment/${id}`);
+  }
+
   getRentorApartments(id:number){
     return this.http.get(`${this.ApartmentUrl}/GetRentorApartment/${id}`)
   }

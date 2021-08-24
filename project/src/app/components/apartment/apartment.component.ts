@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApartmentService } from '../../services/apartment.service';
 
@@ -10,18 +10,18 @@ import { ApartmentService } from '../../services/apartment.service';
 })
 export class ApartmentComponent implements OnInit {
 
-  Apartments: any;
-
+  // Apartments: any;
+  @Input() apartment: any;
   constructor(private apartmentService: ApartmentService) { }
 
   ngOnInit() {
-    this.GetApartments();
+    // this.GetApartments();
   }
 
-  GetApartments() {
-    this.apartmentService.getApartments()
-      .subscribe((apartments: any) => this.Apartments = apartments);
-  }
+  // GetApartments() {
+  //   this.apartmentService.getApartments()
+  //     .subscribe((apartments: any) => this.Apartments = apartments);
+  // }
 
 
 }

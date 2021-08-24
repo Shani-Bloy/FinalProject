@@ -1,7 +1,7 @@
 <h1 style="text-align: center;">search for apartment>>></h1>
-<div *ngIf='!Apartments'>
+<!-- <div *ngIf='!Apartments'>
   <img src='https://localhost:44312/images/1.jpg'>
-</div>
+</div> -->
 
 <div class='main'>
 
@@ -57,7 +57,6 @@
           <span>RentorId </span> : {{apartment.RentorId }} |
           <span>Street </span> : {{apartment.Street }}
           <mat-card-actions>
-
 
             <button mat-flat-button color="primary" routerLink='/apartmentDetails/{{apartment.ApartmentId}}'>for more
               details</button>
