@@ -1,7 +1,4 @@
-<!-- <div *ngIf='rentor&&!showAdd'>
-      <P>Rentor id :{{rentor.IdRentor}}</P>
-        <button mat-flat-button style="background-color:rgb(244, 189, 50); width: 144px; height: 55px;" class="addApartment" (click)='add()'> add new apartment</button>
-    </div> -->
+
 
 <div class="bigDiv" *ngIf='rentor'>
   <div class="example-container">
@@ -44,8 +41,14 @@
         <mat-label>Number of airconditioners</mat-label>
         <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" value="0" type="number" #airconditioners>
         <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+       
       </mat-form-field>
+        <div>
+          <mat-label>Image</mat-label>
+          <input  #imageInput type="file"  (change)='upload(imageInput)'/> 
+        </div>
     </form>
+   
     <button mat-flat-button style="background-color:rgb(244, 50, 50); width: 144px; height: 55px;" class="addApartment"
       (click)="addApartment(rentor.IdRentor,city.value,street.value,floor.value,rooms.value,beds.value,airconditioners.value)">
       <mat-icon>apartment</mat-icon>

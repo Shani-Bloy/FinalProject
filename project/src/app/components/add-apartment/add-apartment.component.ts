@@ -34,6 +34,12 @@ export class AddApartmentComponent implements OnInit {
     this.apartmentService.addApartment({ rentorId, city, street, floor, rooms, beds, airconditioners } as apartment)
       .subscribe(() => console.log({ rentorId, city, street, floor, rooms, beds, airconditioners } as apartment));
   }
+
+  upload(imageInput)
+  {        
+    this.apartmentService.uploadImage(imageInput.files[0]).subscribe();
+   }
+
  
 }
 

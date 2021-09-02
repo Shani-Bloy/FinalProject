@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
+using System.Web.Hosting;
 using System.Web.Http;
 
 namespace API.Controllers
@@ -14,6 +16,13 @@ namespace API.Controllers
     [RoutePrefix("api/apartment")]
     public class ApartmentController : ApiController
     {
+        [Route("addImage")]
+        public void addImage()
+        {
+            HttpPostedFile imageData = HttpContext.Current.Request.Files[0];
+            imageData.SaveAs(HostingEnvironment.MapPath("/images/"+imageData.FileName));
+        }
+
         [Route("GetApartments")]
         public IEnumerable<ApartmentDTO> GetApartments()
         {

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,21 +13,19 @@ import { ApartmentDetailsComponent } from './components/apartment-details/apartm
 import { RentorComponent } from './components/rentor/rentor.component';
 import { HeaderComponent } from './components/header/header.component';
 
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AddApartmentComponent } from './components/add-apartment/add-apartment.component';
 import { UpdateApartmentComponent } from './components/update-apartment/update-apartment.component';
 import { ApartmentsComponent } from './components/apartments/apartments.component';
-
-
 
 const MATERIAL_MODULES = [
   MatCardModule,
@@ -39,8 +37,7 @@ const MATERIAL_MODULES = [
   MatDialogModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatAutocompleteModule
-  
+  MatAutocompleteModule,
 ];
 
 @NgModule({
@@ -61,12 +58,12 @@ const MATERIAL_MODULES = [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule ,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-     ...MATERIAL_MODULES
+    ...MATERIAL_MODULES,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

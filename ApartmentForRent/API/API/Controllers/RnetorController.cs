@@ -1,4 +1,5 @@
-﻿using BL;
+﻿using API.Model;
+using BL;
 using DTO;
 using Microsoft.AspNetCore.Cors;
 using System;
@@ -39,10 +40,23 @@ namespace API.Controllers
         }
         [HttpPost()]
         [Route("login")]
-        public RentorDTO Login([FromBody] UserModel user)
+        public Response Login([FromBody] UserModel user)
         {
-           int x= new BL.RentorBL().login(user.UserName,user.Password);
-           return Get(x);
+            Response result = new Response();
+            try
+            {
+                int x = new BL.RentorBL().login(user.UserName, user.Password);
+                result.IsSuccess = true;
+                result.StatusCode = HttpStatusCode.OK;
+                result.Data = x;
+            }
+            catch (Exception ex)
+            {
+                result.IsSuccess = false;
+                result.Message = $"temp Error, try again later. Error: {ex}";
+                result.StatusCode = HttpStatusCode.Unauthorized;
+            }
+            return result;
         }
 
         // POST: api/Rnetor

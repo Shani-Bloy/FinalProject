@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {  HttpClient, HttpParams } from '@angular/common/http';
 import { apartment } from '../models/apartment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { apartment } from '../models/apartment';
 export class ApartmentService {
 
   ApartmentUrl = 'https://localhost:44312/api/apartment/';
-
+  path:any;
   constructor(private http: HttpClient, ) { }
 
   getApartments(){
@@ -34,6 +35,13 @@ export class ApartmentService {
 
   getRentorApartments(id:number){
     return this.http.get(`${this.ApartmentUrl}/GetRentorApartment/${id}`)
+  }
+
+  uploadImage (image: File): Observable<Object>
+  {
+     let formData = new FormData();
+     this.path=formData.append('image', image);
+     return this.http.post(`${this.ApartmentUrl}/addImage`,formData);
   }
 
   
