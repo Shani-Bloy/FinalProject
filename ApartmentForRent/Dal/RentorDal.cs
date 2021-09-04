@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dal
 {
-    public  class RentorDal
+    public class RentorDal
     {
         public IEnumerable<RentorDetails> GetAll()
         {
@@ -17,7 +17,7 @@ namespace Dal
                     return ctx.RentorDetails.ToList();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(" ", ex);
             }
@@ -38,11 +38,11 @@ namespace Dal
                 ctx.RentorDetails.Add(new RentorDetails()
                 {
                     FirstName = rentor.FirstName,
-                    LastName=rentor.LastName,
-                    Password=rentor.Password,
-                    Mail=rentor.Mail,
-                    Phone=rentor.Phone,
-                    AddaitionalPhone=rentor.AddaitionalPhone
+                    LastName = rentor.LastName,
+                    Password = rentor.Password,
+                    Mail = rentor.Mail,
+                    Phone = rentor.Phone,
+                    AddaitionalPhone = rentor.AddaitionalPhone
                 });
 
                 ctx.SaveChanges();
@@ -50,7 +50,7 @@ namespace Dal
         }
 
         public void Put(RentorDetails rentor)
-        {            
+        {
             using (var ctx = new ApartmentsForRentEntities())
             {
                 var existingRentor = ctx.RentorDetails.Where(s => s.IdRentor == rentor.IdRentor)
@@ -68,8 +68,9 @@ namespace Dal
         {
             using (ApartmentsForRentEntities ctx = new ApartmentsForRentEntities())
             {
-                var y = ctx.RentorDetails.FirstOrDefault(x => x.Mail == r.Mail && x.Password==r.Password);
-                return y.IdRentor;
+                var y = ctx.RentorDetails.FirstOrDefault(x => x.Mail == r.Mail && x.Password == r.Password);
+                return y != null ? y.IdRentor : 0;
+
             }
         }
     }

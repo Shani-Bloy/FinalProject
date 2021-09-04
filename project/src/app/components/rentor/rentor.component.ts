@@ -9,7 +9,6 @@ import { rentor } from 'src/app/models/rentor';
 })
 export class RentorComponent implements OnInit {
 
-  // @Input() rentorData: any;
   showAdd: boolean = true;
   rentorData:rentor;
 

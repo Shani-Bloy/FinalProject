@@ -35,7 +35,6 @@ export class RegisterComponent implements OnInit {
     Phone: string,
     AddaitionalPhone: string
   ) {
-    console.log('work');
     this.rentorService
       .addRentor({
         FirstName,
@@ -44,16 +43,12 @@ export class RegisterComponent implements OnInit {
         Mail,
         Phone,
         AddaitionalPhone,
-      } as rentor)
-      .subscribe(() =>
-        console.log({
-          FirstName,
-          LastName,
-          Password,
-          Mail,
-          Phone,
-          AddaitionalPhone,
-        } as rentor)
-      );
-  }
+      } as rentor)    
+      .subscribe((res: any) => {
+        if (res.IsSuccess) 
+          alert("the rentor registered successfuly");
+         else 
+          alert("erorr :( please try again");
+      }
+    )};
 }

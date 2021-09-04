@@ -28,9 +28,22 @@ namespace API.Controllers
         }
 
         [Route("PostRentor")]
-        public void Post(RentorDTO rentor)
-        {
-            new BL.RentorBL().PostRentor(rentor);
+        public Response Post(RentorDTO rentor)
+        {           
+            Response result = new Response();
+            try
+            {
+                new BL.RentorBL().PostRentor(rentor);
+                result.IsSuccess = true;
+                result.StatusCode = HttpStatusCode.OK;
+            }
+            catch (Exception ex)
+            {
+                result.IsSuccess = false;
+                result.Message = $"temp Error, try again later. Error: {ex}";
+                result.StatusCode = HttpStatusCode.Unauthorized;
+            }
+            return result;
         }
 
         [Route("PutRentor")]
@@ -48,7 +61,7 @@ namespace API.Controllers
                 int x = new BL.RentorBL().login(user.UserName, user.Password);
                 result.IsSuccess = true;
                 result.StatusCode = HttpStatusCode.OK;
-                result.Data = x;
+                result.Data = Get(x);
             }
             catch (Exception ex)
             {
