@@ -11,6 +11,7 @@ export class RentorService {
 
   rentorUrl = 'https://localhost:44312/api/rentor/';
   rentorLogin: rentor;
+  NewRentor:rentor;
   constructor(private http: HttpClient,) { }
 
   addRentor(rentor: rentor) {

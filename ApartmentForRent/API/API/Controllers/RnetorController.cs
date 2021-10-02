@@ -36,6 +36,7 @@ namespace API.Controllers
                 new BL.RentorBL().PostRentor(rentor);
                 result.IsSuccess = true;
                 result.StatusCode = HttpStatusCode.OK;
+                result.Data = Login(new UserModel(rentor.Mail,rentor.Password));
             }
             catch (Exception ex)
             {

@@ -45,7 +45,8 @@ export class LoginComponent implements OnInit {
         if (res.IsSuccess && res.Data) {
           //todo - save data 
           this.rentorLogin=res.Data;
-          this.rentorService.rentorLogin = this.rentorLogin;                   
+          this.rentorService.rentorLogin = this.rentorLogin;   
+          this.rentorService.NewRentor = null;                 
           this.router.navigate(['/rentor']);
         } else {
           this.dialog.open(DialogElements);
@@ -68,7 +69,6 @@ export class LoginComponent implements OnInit {
     return this.form.get('password');
   }
 }
-
 
 @Component({
   selector: 'dialog-elements',

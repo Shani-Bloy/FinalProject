@@ -11,12 +11,15 @@ export class RentorComponent implements OnInit {
 
   showAdd: boolean = true;
   rentorData:rentor;
-
+  newRentor:rentor;
   constructor(private rentorService: RentorService,) { }
 
   ngOnInit(): void {
-    console.log(this.rentorService.rentorLogin);
+    //console.log(this.rentorService.rentorLogin);
     this.rentorData=this.rentorService.rentorLogin;
+    this.newRentor=this.rentorService.NewRentor;
+    console.log(this.rentorService.NewRentor);
+    
   }
 
   add() {

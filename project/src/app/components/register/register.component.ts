@@ -10,6 +10,7 @@ import {
 import { RentorService } from '../../services/rentor.service';
 import { Subject } from 'rxjs';
 import { rentor } from '../../models/rentor';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,7 @@ import { rentor } from '../../models/rentor';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  constructor(private rentorService: RentorService) {}
+  constructor(private rentorService: RentorService,  private router: Router,) {}
 
   ngOnInit(): void {}
   hide = true;
@@ -46,7 +47,19 @@ export class RegisterComponent implements OnInit {
       } as rentor)    
       .subscribe((res: any) => {
         if (res.IsSuccess) 
-          alert("the rentor registered successfuly");
+      {
+        alert("the rentor registered successfuly");
+        console.log(res.Data);
+        this.rentorService.NewRentor=res.Data.Data;
+        this.rentorService.rentorLogin=null;
+        this.router.navigate(['/rentor']);
+
+      }
+        /*
+          this.rentorLogin=res.Data;
+          this.rentorService.rentorLogin = this.rentorLogin;                   
+          this.router.navigate(['/rentor']);
+        */ 
          else 
           alert("erorr :( please try again");
       }

@@ -4,22 +4,31 @@ import { apartment } from '../../models/apartment';
 import { rentor } from 'src/app/models/rentor';
 import { RentorService } from 'src/app/services/rentor.service';
 
-
 @Component({
   selector: 'app-add-apartment',
   templateUrl: './add-apartment.component.html',
-  styleUrls: ['./add-apartment.component.scss']
+  styleUrls: ['./add-apartment.component.scss'],
 })
 export class AddApartmentComponent implements OnInit {
-
   rentor: rentor;
 
-
-  constructor(private apartmentService: ApartmentService, private rentorService: RentorService,) { }
-  options: string[] = ['Bnei Brak', 'Yerushalaim', 'Tel Aviv', 'Petach Tikva', 'Ramat Gan', 'Afula'];
+  constructor(
+    private apartmentService: ApartmentService,
+    private rentorService: RentorService
+  ) {}
+  options: string[] = [
+    'Bnei Brak',
+    'Yerushalaim',
+    'Tel Aviv',
+    'Petach Tikva',
+    'Ramat Gan',
+    'Afula',
+  ];
 
   ngOnInit(): void {
-    this.rentor = this.rentorService.rentorLogin;
+    if (this.rentorService.rentorLogin)
+      this.rentor = this.rentorService.rentorLogin;
+    else this.rentor = this.rentorService.NewRentor;
   }
 
   addApartment(
@@ -29,18 +38,33 @@ export class AddApartmentComponent implements OnInit {
     floor: number,
     rooms: number,
     beds: number,
-    airconditioners: number) {
+    airconditioners: number
+  ) {
     console.log('add apatrtment work');
-    this.apartmentService.addApartment({ rentorId, city, street, floor, rooms, beds, airconditioners } as apartment)
-      .subscribe(() => console.log({ rentorId, city, street, floor, rooms, beds, airconditioners } as apartment));
+    this.apartmentService
+      .addApartment({
+        rentorId,
+        city,
+        street,
+        floor,
+        rooms,
+        beds,
+        airconditioners,
+      } as apartment)
+      .subscribe(() =>
+        console.log({
+          rentorId,
+          city,
+          street,
+          floor,
+          rooms,
+          beds,
+          airconditioners,
+        } as apartment)
+      );
   }
 
-  upload(imageInput)
-  {        
+  upload(imageInput) {
     this.apartmentService.uploadImage(imageInput.files[0]).subscribe();
-   }
-
- 
+  }
 }
-
-
