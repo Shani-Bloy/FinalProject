@@ -15,16 +15,21 @@ namespace API.Controllers
     [RoutePrefix("api/rentor")]
     public class RnetorController : ApiController
     {
+        public static RentorBL rentorBL;
+        public RnetorController()
+        {
+            rentorBL = new RentorBL();
+        }
         [Route("GetRentors")]
         public IEnumerable<RentorDTO> Get()
         {
-            return new RentorBL().GetRentors();
+            return rentorBL.GetRentors();
         }
 
         [Route("GetRentor/{id:int}")]
         public RentorDTO Get(int id)
         {
-            return new RentorBL().GetRentor(id);
+            return rentorBL.GetRentor(id);
         }
 
         [Route("PostRentor")]
@@ -33,10 +38,10 @@ namespace API.Controllers
             Response result = new Response();
             try
             {
-                new BL.RentorBL().PostRentor(rentor);
+                var res = rentorBL.PostRentor(rentor);
                 result.IsSuccess = true;
                 result.StatusCode = HttpStatusCode.OK;
-                result.Data = Login(new UserModel(rentor.Mail,rentor.Password));
+                result.Data = res;
             }
             catch (Exception ex)
             {
@@ -50,16 +55,16 @@ namespace API.Controllers
         [Route("PutRentor")]
         public void Put(RentorDTO rentor)
         {
-            new BL.RentorBL().PutRentor(rentor);
+            rentorBL.PutRentor(rentor);
         }
-        [HttpPost()]
+        [HttpPost]
         [Route("login")]
         public Response Login([FromBody] UserModel user)
         {
             Response result = new Response();
             try
             {
-                int x = new BL.RentorBL().login(user.UserName, user.Password);
+                int x = rentorBL.login(user.UserName, user.Password);
                 result.IsSuccess = true;
                 result.StatusCode = HttpStatusCode.OK;
                 result.Data = Get(x);
@@ -67,7 +72,7 @@ namespace API.Controllers
             catch (Exception ex)
             {
                 result.IsSuccess = false;
-                result.Message = $"temp Error, try again later. Error: {ex}";
+                result.Message = $"Temp Error, try again later. Error: {ex}";
                 result.StatusCode = HttpStatusCode.Unauthorized;
             }
             return result;
