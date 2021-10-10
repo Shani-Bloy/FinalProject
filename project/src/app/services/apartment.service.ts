@@ -11,7 +11,7 @@ export class ApartmentService {
 
   ApartmentUrl = 'https://localhost:44312/api/apartment/';
   path:any;
-  constructor(private http: HttpClient, ) { }
+  constructor(private http: HttpClient) { }
 
   getApartments(){
     return this.http.get(`${this.ApartmentUrl}/GetApartments`);

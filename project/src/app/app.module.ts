@@ -26,6 +26,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AddApartmentComponent } from './components/add-apartment/add-apartment.component';
 import { UpdateApartmentComponent } from './components/update-apartment/update-apartment.component';
 import { ApartmentsComponent } from './components/apartments/apartments.component';
+import { DateComponent } from './components/date/date.component';
 
 const MATERIAL_MODULES = [
   MatCardModule,
@@ -53,6 +54,7 @@ const MATERIAL_MODULES = [
     AddApartmentComponent,
     UpdateApartmentComponent,
     ApartmentsComponent,
+    DateComponent,
   ],
   imports: [
     BrowserModule,
