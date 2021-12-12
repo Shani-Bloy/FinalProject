@@ -1,4 +1,4 @@
-<h1 style="text-align: center;">search for apartment>>></h1>
+<h1 style="text-align: center;">Find the ideal apartment for you</h1>
 <!-- <div *ngIf='!Apartments'>
   <img src='https://localhost:44312/images/1.jpg'>
 </div> -->
@@ -40,7 +40,10 @@
 </div>
 
   <div *ngIf='Apartments'>
+ <h1 style="text-align: center;">{{Apartments.length}} apartments were found</h1>
+ 
     <div *ngFor="let apartment of Apartments">
+     
       <div class="apartments">
         <mat-card>
           <span>city </span> : {{apartment.City}} |

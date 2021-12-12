@@ -27,6 +27,7 @@ import { AddApartmentComponent } from './components/add-apartment/add-apartment.
 import { UpdateApartmentComponent } from './components/update-apartment/update-apartment.component';
 import { ApartmentsComponent } from './components/apartments/apartments.component';
 import { DateComponent } from './components/date/date.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 const MATERIAL_MODULES = [
   MatCardModule,
@@ -55,6 +56,7 @@ const MATERIAL_MODULES = [
     UpdateApartmentComponent,
     ApartmentsComponent,
     DateComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,6 @@ namespace API.Controllers
     [RoutePrefix("api/values")]
     public class ValuesController : ApiController
     {
-       
         [Route("GetRentors")]
         public IEnumerable<RentorDTO> Get()
         {

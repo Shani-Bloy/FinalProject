@@ -61,25 +61,29 @@ namespace Dal
                 return ctx.Apartment.Single(x => x.ApartmentId == id);
             }
         }
-        public void PostNewApartment(Apartment apartment)
+        public void PostNewApartment(Apartment apartment,ApartmentDetails apartmentDetails)
         {
             using (var ctx = new ApartmentsForRentEntities())
             {
                 ctx.Apartment.Add(new Apartment()
                 {
-                    RentorId=apartment.RentorId,
-                    City=apartment.City,
-                    Street=apartment.Street,
-                    Floor=apartment.Floor,
-                    NumberOfRooms=apartment.NumberOfRooms,
-                    NumberOfBeds=apartment.NumberOfBeds,
-                    NumberOfAirConditioners=apartment.NumberOfAirConditioners
-                });
+                    RentorId = apartment.RentorId,
+                    City = apartment.City,
+                    Street = apartment.Street,
+                    Floor = apartment.Floor,
+                    NumberOfRooms = apartment.NumberOfRooms,
+                    NumberOfBeds = apartment.NumberOfBeds,
+                    NumberOfAirConditioners = apartment.NumberOfAirConditioners
+                }); ctx.SaveChanges();
 
-                ctx.SaveChanges();
+                ApartmentDetailsDAL dal = new ApartmentDetailsDAL();
+                dal.PostNewApartmentDetails(apartmentDetails);
             }
+            
         }
-    }
+     
+
+    }    
 }
 
 

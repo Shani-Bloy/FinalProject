@@ -14,6 +14,8 @@ export class DateService {
   constructor(private http: HttpClient) { }
 
   addDate(date: date) {
+    console.log(date.ApartmentId);  console.log(date.endDate);  console.log(date.startDate);
+    
     return this.http.post<date>(`${this.dateUrl}/addDate`, date);
   }
 }

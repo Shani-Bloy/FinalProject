@@ -10,6 +10,7 @@ namespace BL
 {
    public class ApartmentBL
     {
+        public string  Image { get; set; }
         public IEnumerable<ApartmentDTO> GetApartments()
         {
             var list = new Dal.ApartmentDAL().GetAllApartments();
@@ -45,9 +46,9 @@ namespace BL
         {
             return Converters.ApartmentConverter.GetApartmentDTOFromEntity(new Dal.ApartmentDAL().GetApartment(id));
         }
-        public void PostApartment(ApartmentDTO apartment)
+        public void PostApartment(ApartmentDTO apartment,ApartmentDetailsDTO apartmentDetails)
         {
-            new Dal.ApartmentDAL().PostNewApartment(Converters.ApartmentConverter.GetApartmentFromDTO(apartment));
+            new Dal.ApartmentDAL().PostNewApartment(Converters.ApartmentConverter.GetApartmentFromDTO(apartment), Converters.ApartmentDetailsConverter.GetApartmentDetailsFromDTO(apartmentDetails));
         }
     }
 }

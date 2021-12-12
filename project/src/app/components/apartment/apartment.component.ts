@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ApartmentService } from '../../services/apartment.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DateComponent } from '../date/date.component';
-
+import { date } from '../../models/date';
 
 @Component({
   selector: 'app-apartment',
@@ -14,19 +14,24 @@ export class ApartmentComponent implements OnInit {
 
    animal: string;
   name: string;
+  dateS:date;
+  dateE:date;
   // Apartments: any;
   @Input() apartment: any;
   constructor(private apartmentService: ApartmentService,public dialog: MatDialog) { }
 
+
   openDialog(): void {
     const dialogRef = this.dialog.open(DateComponent, {
-      width: '250px',
-      data: {name: this.name, animal: this.animal}
+      width: '300px',
+      data: {ApartmentId: this.apartment.ApartmentId,startDate:this.dateS,endDate:this.dateE},
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.animal = result;
+      console.log(result);
+      
+
     });
   }
 

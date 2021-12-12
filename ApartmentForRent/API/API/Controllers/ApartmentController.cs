@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.Http;
+using Newtonsoft.Json.Linq;
 
 namespace API.Controllers
 
@@ -16,10 +17,14 @@ namespace API.Controllers
     [RoutePrefix("api/apartment")]
     public class ApartmentController : ApiController
     {
+        public ApartmentDTO apartment { get; set; } = new ApartmentDTO();
+        public ApartmentDetailsDTO apartmentDetails { get; set; } = new ApartmentDetailsDTO();
+
         [Route("addImage")]
         public void addImage()
         {
-            HttpPostedFile imageData = HttpContext.Current.Request.Files[0];
+           HttpPostedFile imageData = HttpContext.Current.Request.Files[0];
+      
             imageData.SaveAs(HostingEnvironment.MapPath("/images/"+imageData.FileName));
         }
 
@@ -30,7 +35,7 @@ namespace API.Controllers
         }
 
         [HttpGet()]
-        [Route("Search/{city}/{num}")]
+        [Route("Search/{city}/{num}/{date1}/{date2}")]
         public IEnumerable<ApartmentDTO> SearchApartments(string city,string num)
         {
             
@@ -41,7 +46,6 @@ namespace API.Controllers
         [Route("GetRentorApartment/{id}")]
         public IEnumerable<ApartmentDTO> GetRentorApartments(int id)
         {
-
             return new ApartmentBL().RentorApartments(id);
         }
 
@@ -70,9 +74,11 @@ namespace API.Controllers
         }
 
         [Route("PostApartment")]
-        public void Post(ApartmentDTO apartment)
+        public void Post([FromBody] JObject data)
         {
-            new BL.ApartmentBL().PostApartment(apartment);
+            ApartmentDTO  apartment = data["apartment"].ToObject<ApartmentDTO>();
+            ApartmentDetailsDTO  apartmentDetails = data["apartmentDetails"].ToObject<ApartmentDetailsDTO>();          
+            new BL.ApartmentBL().PostApartment(apartment, apartmentDetails);
         }
 
 

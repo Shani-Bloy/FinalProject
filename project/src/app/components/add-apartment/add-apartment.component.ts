@@ -1,8 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ApartmentService } from 'src/app/services/apartment.service';
 import { apartment } from '../../models/apartment';
+import { apartmentDetails } from '../../models/apartmentDetails';
 import { rentor } from 'src/app/models/rentor';
 import { RentorService } from 'src/app/services/rentor.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-add-apartment',
@@ -14,7 +17,8 @@ export class AddApartmentComponent implements OnInit {
 
   constructor(
     private apartmentService: ApartmentService,
-    private rentorService: RentorService
+    private rentorService: RentorService,
+    public dialog: MatDialog
   ) {}
   options: string[] = [
     'Bnei Brak',
@@ -38,19 +42,14 @@ export class AddApartmentComponent implements OnInit {
     floor: number,
     rooms: number,
     beds: number,
-    airconditioners: number
+    airconditioners: number,
+    ImageSrc: string,
   ) {
     console.log('add apatrtment work');
     this.apartmentService
-      .addApartment({
-        rentorId,
-        city,
-        street,
-        floor,
-        rooms,
-        beds,
-        airconditioners,
-      } as apartment)
+      .addApartment({ rentorId,city,  street,  floor, rooms, beds, airconditioners,} as apartment,      
+        {rentorId, ImageSrc} as apartmentDetails)
+      
       .subscribe(() =>
         console.log({
           rentorId,
@@ -62,9 +61,28 @@ export class AddApartmentComponent implements OnInit {
           airconditioners,
         } as apartment)
       );
+
+      this.rentorService.rentorLogin=this.rentorService.NewRentor;
+      this.rentorService.NewRentor = null;
+      this.openDialog(); 
   }
 
-  upload(imageInput) {
-    this.apartmentService.uploadImage(imageInput.files[0]).subscribe();
+  upload(ImageSrc) {
+    console.log(ImageSrc.files[0].name);
+    
+    this.apartmentService.uploadImage(ImageSrc.files[0]).subscribe();
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '550px',
+      data: {},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+      
+    });
   }
 }

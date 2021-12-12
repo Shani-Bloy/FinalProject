@@ -17,27 +17,21 @@ export interface DialogData {
 export class DateComponent implements OnInit {
 
   constructor(private dateService:DateService,
-    public dialogRef: MatDialogRef<DateComponent> ) {}
+    public dialogRef: MatDialogRef<DateComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: date, ) {}
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  Ok(
-    startDate,
-    endDate
-  ){
-    this.dateService.addDate(
+  Ok(startDate,endDate,ApartmentId){  
+     this.dateService.addDate(
       {startDate,
-        endDate   
-      } as date
-    ).subscribe(()=>console.log(  {startDate,
-      endDate   
-    } as date)
-    )
-  
+        endDate ,
+        ApartmentId  
+      } as date)
+    .subscribe(()=>console.log(  {startDate,endDate  ,ApartmentId } as date) )
   }
-
 
   ngOnInit(): void {
   }

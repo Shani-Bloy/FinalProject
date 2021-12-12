@@ -1,4 +1,7 @@
+<h1>choose dates</h1>
+
 <mat-form-field appearance="fill" class="search">
+
     <mat-label>check-in check-out</mat-label>
     <mat-date-range-input [rangePicker]="picker">
       <input matStartDate  placeholder="Start date" #startDate>
@@ -10,5 +13,5 @@
 
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button  cdkFocusInitial (click)="Ok(startDate.value,endDate.value)">Ok</button>
+  <button mat-button (click)="Ok(startDate.value,endDate.value,data.ApartmentId)" [mat-dialog-close]="data.ApartmentId" cdkFocusInitial >Ok</button>
 </div>

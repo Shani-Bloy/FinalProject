@@ -5,5 +5,6 @@ export interface apartment {
     floor: number,
     rooms: number,
     beds: number,
-    airconditioners: number
+    airconditioners: number,
+    imageInput: string,
 }

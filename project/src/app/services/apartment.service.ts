@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {  HttpClient, HttpParams } from '@angular/common/http';
 import { apartment } from '../models/apartment';
+import { apartmentDetails } from '../models/apartmentDetails';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -21,8 +22,8 @@ export class ApartmentService {
     return this.http.get(`${this.ApartmentUrl}/Search/${city}/${numChildren}`);
   }
 
-  addApartment(apartment: apartment) {
-    return this.http.post<apartment>(`${this.ApartmentUrl}/PostApartment`, apartment);
+  addApartment(apartment: apartment,apartmentDetails:apartmentDetails) {
+    return this.http.post<apartment>(`${this.ApartmentUrl}/PostApartment`,{apartment,apartmentDetails});
   }
 
   getApartmentDetails(id:number) {
