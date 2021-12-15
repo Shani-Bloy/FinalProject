@@ -22,14 +22,21 @@ namespace Dal
                 throw new Exception(" error!!!!", ex);
             }
         }
-        public IEnumerable<Apartment> SearchApartment(string city,string numChildren)
+        public IEnumerable<Apartment> SearchApartment(string city,int? numChildren,DateTime? startDate, DateTime? endDate)
         {
             try
             {
                 using (ApartmentsForRentEntities ctx = new ApartmentsForRentEntities())
                 {
-                    var q = ctx.Apartment.AsEnumerable().Where(x => x.City == city && x.NumberOfBeds == int.Parse(numChildren)).ToList();
-                    return q;
+                    var q = ctx.Dates.Include("Apartment").AsEnumerable().Where(x => (x.Apartment.City == city) &&
+                                                                                  (x.Apartment.NumberOfBeds == numChildren || numChildren == null) &&
+                                                                                  (x.StartDate == startDate || startDate == null) &&
+                                                                                  (x.EndDate == startDate || endDate == null)
+                                                                                 ).ToList();
+
+                    
+                    var a = q.Select(t => t.Apartment).ToList();
+                    return a;
                 }
             }
             catch (Exception ex)

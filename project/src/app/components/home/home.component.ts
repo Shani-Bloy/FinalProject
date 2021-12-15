@@ -31,8 +31,8 @@ export class HomeComponent implements OnInit {
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  search(city:string,numChildren:string){    
-      this.apartmentService.getApartmentsForSearch(city,numChildren)
+  search(city:string,numChildren:number,startDate:Date,endDate:Date){    
+      this.apartmentService.getApartmentsForSearch(city,numChildren,startDate,endDate)
         .subscribe((apartments: any) => this.Apartments = apartments);
   }
 }

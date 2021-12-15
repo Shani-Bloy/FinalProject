@@ -21,9 +21,9 @@ namespace BL
             }
 
         }
-        public IEnumerable<ApartmentDTO> SearchApartments(string city,string num )
+        public IEnumerable<ApartmentDTO> SearchApartments(string city, int? numChildren, DateTime? startDate, DateTime? endDate)
         {
-            var list = new Dal.ApartmentDAL().SearchApartment(city,num);
+            var list = new Dal.ApartmentDAL().SearchApartment(city,numChildren,startDate,endDate);
 
             foreach (var item in list)
             {

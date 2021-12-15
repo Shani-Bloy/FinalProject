@@ -35,11 +35,11 @@ namespace API.Controllers
         }
 
         [HttpGet()]
-        [Route("Search/{city}/{num}/{date1}/{date2}")]
-        public IEnumerable<ApartmentDTO> SearchApartments(string city,string num)
+        [Route("Search/{city}/{numChildren}/{startDate:DateTime}/{endDate:DateTime}")]
+        public IEnumerable<ApartmentDTO> SearchApartments(string city, int? numChildren, DateTime? startDate, DateTime? endDate)
         {
             
-            return new ApartmentBL().SearchApartments(city,num);
+            return new ApartmentBL().SearchApartments(city,numChildren,startDate,endDate);
         }
 
         [HttpGet()]

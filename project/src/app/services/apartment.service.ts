@@ -3,6 +3,7 @@ import {  HttpClient, HttpParams } from '@angular/common/http';
 import { apartment } from '../models/apartment';
 import { apartmentDetails } from '../models/apartmentDetails';
 import { Observable } from 'rxjs';
+import {formatDate} from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,10 @@ export class ApartmentService {
     return this.http.get(`${this.ApartmentUrl}/GetApartments`);
   }
 
-  getApartmentsForSearch( city: string, numChildren: string){  
-    return this.http.get(`${this.ApartmentUrl}/Search/${city}/${numChildren}`);
+  getApartmentsForSearch( city: string, numChildren: number,startDate:Date,endDate:Date){  
+    const date1 = new Date(startDate);
+    const date2 = new Date(endDate);
+    return this.http.get(`${this.ApartmentUrl}/Search/${city}/${numChildren}/${formatDate(date1, 'yyyy-MM-dd', 'en')}/${formatDate(date2, 'yyyy-MM-dd', 'en')}`);
   }
 
   addApartment(apartment: apartment,apartmentDetails:apartmentDetails) {
