@@ -23,6 +23,8 @@ namespace BL
         public ApartmentDetailsDTO GetApartmentDetails(int id)
         {
             return Converters.ApartmentDetailsConverter.GetApartmentDetailsDTOFromEntity(new Dal.ApartmentDetailsDAL().GetApartmentDetails(id));
-        }
+        }       
+
+        
     }
 }

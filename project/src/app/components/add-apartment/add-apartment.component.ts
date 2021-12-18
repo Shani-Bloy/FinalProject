@@ -62,8 +62,8 @@ export class AddApartmentComponent implements OnInit {
         } as apartment)
       );
 
-      this.rentorService.rentorLogin=this.rentorService.NewRentor;
-      this.rentorService.NewRentor = null;
+     // this.rentorService.rentorLogin=this.rentorService.NewRentor;
+     // this.rentorService.NewRentor = null;
       this.openDialog(); 
   }
 

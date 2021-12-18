@@ -28,6 +28,7 @@ import { UpdateApartmentComponent } from './components/update-apartment/update-a
 import { ApartmentsComponent } from './components/apartments/apartments.component';
 import { DateComponent } from './components/date/date.component';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { SearchComponent } from './components/search/search.component';
 
 const MATERIAL_MODULES = [
   MatCardModule,
@@ -57,6 +58,7 @@ const MATERIAL_MODULES = [
     ApartmentsComponent,
     DateComponent,
     DialogComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

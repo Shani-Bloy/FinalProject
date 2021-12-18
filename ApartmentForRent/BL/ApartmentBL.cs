@@ -50,5 +50,14 @@ namespace BL
         {
             new Dal.ApartmentDAL().PostNewApartment(Converters.ApartmentConverter.GetApartmentFromDTO(apartment), Converters.ApartmentDetailsConverter.GetApartmentDetailsFromDTO(apartmentDetails));
         }
+        public void Update(ApartmentDTO apartment)
+        {
+            new Dal.ApartmentDAL().Put(Converters.ApartmentConverter.GetApartmentFromDTO(apartment));
+        }
+
+        public void Delete(int id)
+        {
+            new Dal.ApartmentDAL().Delete(id);
+        }
     }
 }

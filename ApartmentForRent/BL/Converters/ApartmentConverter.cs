@@ -46,6 +46,8 @@ namespace BL.Converters
             apartment.Price = a.Price;
             apartment.RentorId = a.RentorId;
             apartment.Street = a.Street;
+            apartment.Img = a.Img;
+            
             return apartment;
         }
     }

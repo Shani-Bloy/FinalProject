@@ -1,74 +1,36 @@
-<h1 style="text-align: center;">Find the ideal apartment for you</h1>
-<!-- <div *ngIf='!Apartments'>
-  <img src='https://localhost:44312/images/1.jpg'>
-</div> -->
+<search></search>
 
-<div class='main'>
-
-  <mat-form-field appearance="fill" class="search">
-    <mat-label>check-in check-out</mat-label>
-    <mat-date-range-input [rangePicker]="picker">
-      <input matStartDate #StartDate placeholder="Start date">
-      <input matEndDate #EndDate placeholder="End date">
-    </mat-date-range-input>
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-date-range-picker #picker></mat-date-range-picker>
-  </mat-form-field>
-
-  <form class="example-form">
-    <mat-form-field class="example-full-width" appearance="fill" class="search">
-      <mat-label>City</mat-label>
-      <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
-        [matAutocomplete]="auto" #city>
-      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-          {{option}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-  </form>
-
-  <mat-form-field appearance="fill" class="search">
-    <mat-label>num children</mat-label>
-    <input matInput type="number" min="0" max='20' #numChildren>
-  </mat-form-field>
-
-  <button mat-flat-button style="background-color:rgb(244, 189, 50); width: 144px; height: 55px;" class="search"
-    (click)='search(city.value,numChildren.value,StartDate.value,EndDate.value)'>
-    <mat-icon>search</mat-icon> search
-  </button>
-</div>
-
-  <div *ngIf='Apartments'>
- <h1 style="text-align: center;">{{Apartments.length}} apartments were found</h1>
- 
-    <div *ngFor="let apartment of Apartments">
-     
-      <div class="apartments">
-        <mat-card>
-          <span>city </span> : {{apartment.City}} |
-          <span>DiscountPercentages </span> : {{apartment.DiscountPercentages}} |
-          <span>Elevator </span> : {{apartment.Elevator}} |
-          <span>Floor </span> : {{apartment.Floor}} |
-          <span>ImmediatePrice </span> : {{apartment.ImmediatePrice}} |
-          <span>IsRentingImmediately </span> : {{apartment.IsRentingImmediately}} |
-          <span>NumberOfAirConditioners</span> : {{apartment.NumberOfAirConditioners}} |
-          <span>NumberOfBeds </span> : {{apartment.NumberOfBeds }} |
-          <span>NumberOfDiscountDays </span> : {{apartment.NumberOfDiscountDays }} |
-          <span>NumberOfRooms </span> : {{apartment.NumberOfRooms }} |
-          <span>Price </span> : {{apartment.Price }} |
-          <span>RentorId </span> : {{apartment.RentorId }} |
-          <span>Street </span> : {{apartment.Street }}
-          <mat-card-actions>
-
-            <button mat-flat-button color="primary" routerLink='/apartmentDetails/{{apartment.ApartmentId}}'>for more
-              details</button>
-          </mat-card-actions>
-        </mat-card>
-
-
-
-      </div>
-
+<h1 style="text-align: center;">Apartments>>>></h1>
+<div *ngIf='apartments'>
+  <div *ngFor='let apartment of apartments'>
+    <div class="apartments" style="width: 80%; margin: auto;">
+      <mat-card>
+          <mat-card-title>{{apartment.ApartmentId}}</mat-card-title> 
+          <div style="width: 70%; text-align: left;">
+              <span>city </span> : {{apartment.City}} |
+              <span>DiscountPercentages </span> : {{apartment.DiscountPercentages}} |
+              <span>Elevator </span> : {{apartment.Elevator}} |
+              <span>Floor </span> : {{apartment.Floor}} |
+              <span>ImmediatePrice </span> : {{apartment.ImmediatePrice}} |
+              <span>IsRentingImmediately </span> : {{apartment.IsRentingImmediately}} |
+              <span>NumberOfAirConditioners</span> : {{apartment.NumberOfAirConditioners}} |
+              <span>NumberOfBeds </span> : {{apartment.NumberOfBeds }} |
+              <span>NumberOfDiscountDays </span> : {{apartment.NumberOfDiscountDays }} |
+              <span>NumberOfRooms </span> : {{apartment.NumberOfRooms }} |
+              <span>Price </span> : {{apartment.Price }} |
+              <span>RentorId </span> : {{apartment.RentorId }} |
+              <span>Street </span> : {{apartment.Street }} 
+        
+              <mat-card-actions>
+            
+              <button mat-flat-button  style="background-color:rgb(244, 189, 50);" routerLink='/apartmentDetails/{{apartment.ApartmentId}}'>for more
+                  details</button>
+                         </mat-card-actions> 
+           </div>  
+              <div style="position: absolute; right: 9px; top:8px;">
+               
+              </div>
+      </mat-card>   
     </div>
-  </div>
+    <div style="height: 100px;"></div>
+</div>

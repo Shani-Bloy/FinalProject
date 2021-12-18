@@ -1,4 +1,5 @@
 export interface apartment {
+    ApartmentId:number,
     rentorId:number,
     city: string,
     street: string,

@@ -36,7 +36,7 @@ namespace Dal
         public string Price { get; set; }
         public string DiscountPercentages { get; set; }
         public string NumberOfDiscountDays { get; set; }
-    
+        public string Img { get; set; }
         public virtual RentorDetails RentorDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ApartmentDetails> ApartmentDetails { get; set; }

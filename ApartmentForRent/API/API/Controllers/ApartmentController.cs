@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Hosting;
 using System.Web.Http;
 using Newtonsoft.Json.Linq;
+using API.Model;
 
 namespace API.Controllers
 
@@ -60,8 +61,45 @@ namespace API.Controllers
         {
             return new ApartmentDetailsBL().GetApartmentDetails(id);
         }
+        [HttpPut]
+        [Route("updateApartment")]
+        public Response updateApartment(ApartmentDTO apartment)
+        {
+            Response result = new Response();
+            try
+            {
+                new ApartmentBL().Update(apartment);
+                result.IsSuccess = true;
+                result.StatusCode = HttpStatusCode.OK;              
+            }
+            catch (Exception ex)
+            {
+                result.IsSuccess = false;
+                result.Message = $"Temp Error, try again later. Error: {ex}";
+                result.StatusCode = HttpStatusCode.Unauthorized;
+            }
+            return result;           
+        }
 
-       
+        [Route("deleteApartment/{id:int}")]
+        public Response deleteApartment(int id)
+        {
+            Response result = new Response();
+            try
+            {
+                new ApartmentBL().Delete(id);
+                result.IsSuccess = true;
+                result.StatusCode = HttpStatusCode.OK;
+            }
+            catch (Exception ex)
+            {
+                result.IsSuccess = false;
+                result.Message = $"Temp Error, try again later. Error: {ex}";
+                result.StatusCode = HttpStatusCode.Unauthorized;
+            }
+            return result;
+        }
+
         // GET: api/Apartment/5
         public string Get(int id)
         {

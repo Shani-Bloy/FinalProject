@@ -4,6 +4,8 @@ import { ApartmentService } from '../../services/apartment.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DateComponent } from '../date/date.component';
 import { date } from '../../models/date';
+import { Location } from '@angular/common';
+import { apartment } from 'src/app/models/apartment';
 
 @Component({
   selector: 'app-apartment',
@@ -12,13 +14,13 @@ import { date } from '../../models/date';
 })
 export class ApartmentComponent implements OnInit {
 
-   animal: string;
+  animal: string;
   name: string;
   dateS:date;
   dateE:date;
   // Apartments: any;
   @Input() apartment: any;
-  constructor(private apartmentService: ApartmentService,public dialog: MatDialog) { }
+  constructor(private apartmentService: ApartmentService,public dialog: MatDialog, private location: Location) { }
 
 
   openDialog(): void {
@@ -33,6 +35,15 @@ export class ApartmentComponent implements OnInit {
       
 
     });
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
+
+  delete(): void {
+    alert('are you sure you want to delete this apartment?');
+      this.apartmentService.deleteApartment(this.apartment).subscribe(() => this.goBack());
   }
 
   ngOnInit() {

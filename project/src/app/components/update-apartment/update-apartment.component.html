@@ -13,7 +13,8 @@
         <p>NumberOfRooms : <input [(ngModel)]="apartment.NumberOfRooms"></p> 
         <p>Price : <input [(ngModel)]="apartment.Price"></p>       
         <p>Street : <input [(ngModel)]="apartment.Street"> </p>   
-        <mat-card-actions>             
+        <mat-card-actions>    
+            <button mat-flat-button color="primary" (click)='save()'>SAVE</button>                    
     <button mat-flat-button color="primary" routerLink='/apartmentDetails/{{apartment.ApartmentId}}'>for more details</button>
     </mat-card-actions>
     </mat-card>     

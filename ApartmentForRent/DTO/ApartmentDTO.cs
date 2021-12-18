@@ -20,6 +20,7 @@ namespace DTO
         public Nullable<bool> IsRentingImmediately { get; set; }
         public string ImmediatePrice { get; set; }
         public string Price { get; set; }
+        public string Img { get; set; }
         public string DiscountPercentages { get; set; }
         public string NumberOfDiscountDays { get; set; }
     }

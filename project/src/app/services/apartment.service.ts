@@ -20,9 +20,7 @@ export class ApartmentService {
   }
 
   getApartmentsForSearch( city: string, numChildren: number,startDate:Date,endDate:Date){  
-    const date1 = new Date(startDate);
-    const date2 = new Date(endDate);
-    return this.http.get(`${this.ApartmentUrl}/Search/${city}/${numChildren}/${formatDate(date1, 'yyyy-MM-dd', 'en')}/${formatDate(date2, 'yyyy-MM-dd', 'en')}`);
+    return this.http.get(`${this.ApartmentUrl}/Search/${city}/${numChildren}/${formatDate(startDate, 'yyyy-MM-dd', 'en')}/${formatDate(endDate, 'yyyy-MM-dd', 'en')}`);
   }
 
   addApartment(apartment: apartment,apartmentDetails:apartmentDetails) {
@@ -41,11 +39,20 @@ export class ApartmentService {
     return this.http.get(`${this.ApartmentUrl}/GetRentorApartment/${id}`)
   }
 
+  updateApartment(apartment: apartment) {
+    return this.http.put(`${this.ApartmentUrl}/updateApartment`, apartment)
+  }
+
   uploadImage (image: File): Observable<Object>
   {
      let formData = new FormData();
      this.path=formData.append('image', image);
      return this.http.post(`${this.ApartmentUrl}/addImage`,formData);
+  }
+
+  deleteApartment(apartment: apartment ){
+  const id =  apartment.ApartmentId;
+    return this.http.delete<apartment>(`${this.ApartmentUrl}/deleteApartment/${id}`)
   }
 
   

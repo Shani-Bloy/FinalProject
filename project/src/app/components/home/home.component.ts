@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
 import { ApartmentService } from 'src/app/services/apartment.service';
+import { RentorService } from 'src/app/services/rentor.service';
 
 @Component({
   selector: 'app-home',
@@ -10,29 +8,32 @@ import { ApartmentService } from 'src/app/services/apartment.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  activatedRoute: any;
 
-  constructor(private apartmentService: ApartmentService,) { }
- 
-  myControl = new FormControl();
-  options: string[] = ['Bnei Brak', 'Yerushalaim', 'Tel Aviv','Petach Tikva','Ramat Gan','Afula'];
-  filteredOptions: Observable<string[]>;
-  Apartments:any;
+  constructor(private apartmentService: ApartmentService, private rentorService: RentorService,) { }
 
-  ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    );
+  apartments: any;
+  Apartment:any;
+
+   ngOnInit() {
+     this.getAllApartments();
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  getAllApartments(){
+    this.apartmentService.getApartments()
+    .subscribe((apartments: any) => this.apartments = apartments);
   }
 
-  search(city:string,numChildren:number,startDate:Date,endDate:Date){    
-      this.apartmentService.getApartmentsForSearch(city,numChildren,startDate,endDate)
-        .subscribe((apartments: any) => this.Apartments = apartments);
-  }
+  //   getApartmentDetails(id:number) {   
+  //   this.apartmentService.getApartmentDetails(id).
+  //   subscribe((apartmentDetails) => this.Apartment = apartmentDetails);
+  // }
+  
+  // getApartmentImg(){
+  //   for(var i=0; i>this.apartments; i++){
+  //     this.getApartmentDetails(this.apartments[i].ApartmentId)
+  //     console.log(this.apartments[i].ApartmentId);
+      
+  //   }
+  // }
 }

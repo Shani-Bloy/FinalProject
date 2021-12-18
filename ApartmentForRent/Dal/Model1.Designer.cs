@@ -1,12 +1,6 @@
-﻿// T4 code generation is enabled for model 'D:\ApartmentForRent\ApartmentForRent\Dal\Model1.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\FinalProject\ApartmentForRent\Dal\Model1.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
-// property to 'LegacyectContext'. This property is available in the Properties Window when the model
- 
-
-
-
-
-
+// property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
 
 // If no context and entity classes have been generated, it may be because you created an empty model but

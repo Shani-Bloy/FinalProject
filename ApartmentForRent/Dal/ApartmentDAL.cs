@@ -28,11 +28,12 @@ namespace Dal
             {
                 using (ApartmentsForRentEntities ctx = new ApartmentsForRentEntities())
                 {
-                    var q = ctx.Dates.Include("Apartment").AsEnumerable().Where(x => (x.Apartment.City == city) &&
+                    var q = ctx.Dates.Include("Apartment").Where(x => ( x.Apartment.City == city) &&(x.Apartment.ApartmentId==x.ApartmentId) &&
                                                                                   (x.Apartment.NumberOfBeds == numChildren || numChildren == null) &&
                                                                                   (x.StartDate == startDate || startDate == null) &&
-                                                                                  (x.EndDate == startDate || endDate == null)
+                                                                                  (x.EndDate == endDate || endDate == null)
                                                                                  ).ToList();
+
 
                     
                     var a = q.Select(t => t.Apartment).ToList();
@@ -43,6 +44,51 @@ namespace Dal
             {
                 throw new Exception(" error!!!!", ex);
             }
+        }
+
+        public void Put(Apartment apartment)
+        {
+            using (var ctx = new ApartmentsForRentEntities())
+            {
+                var existingApartment = ctx.Apartment.Where(s => s.ApartmentId == apartment.ApartmentId)
+                                                        .FirstOrDefault<Apartment>();
+                if (existingApartment != null)
+                {
+                    existingApartment.RentorId = apartment.RentorId;
+                    existingApartment.City = apartment.City;
+                    existingApartment.Street = apartment.Street;
+                    existingApartment.Floor = apartment.Floor;
+                    existingApartment.NumberOfRooms = apartment.NumberOfRooms;
+                    existingApartment.NumberOfBeds = apartment.NumberOfBeds;
+                    existingApartment.NumberOfAirConditioners = apartment.NumberOfAirConditioners;
+                    ctx.SaveChanges();
+                }
+            }
+        }
+
+        public void Delete(int id)
+        {
+            using (var ctx = new ApartmentsForRentEntities())
+            {
+                var a = ctx.Dates.SingleOrDefault(t => t.ApartmentId == id); //returns a single item.
+                if (a != null)
+                {
+                    ctx.Dates.Remove(a);                    
+                }
+               
+                var b = ctx.ApartmentDetails.SingleOrDefault(t => t.IdApartment == id);
+                if (b != null)
+                {
+                    ctx.ApartmentDetails.Remove(b);
+                }
+                
+                var c = ctx.Apartment.SingleOrDefault(t => t.ApartmentId == id);
+                if (c != null)
+                {
+                    ctx.Apartment.Remove(c);
+                } 
+                ctx.SaveChanges();
+            }                                           
         }
 
         public IEnumerable<Apartment> RentorApartments(int id)
@@ -80,7 +126,8 @@ namespace Dal
                     Floor = apartment.Floor,
                     NumberOfRooms = apartment.NumberOfRooms,
                     NumberOfBeds = apartment.NumberOfBeds,
-                    NumberOfAirConditioners = apartment.NumberOfAirConditioners
+                    NumberOfAirConditioners = apartment.NumberOfAirConditioners,
+                    Img = "https://localhost:44312/images/" + apartmentDetails.ImageSrc
                 }); ctx.SaveChanges();
 
                 ApartmentDetailsDAL dal = new ApartmentDetailsDAL();
