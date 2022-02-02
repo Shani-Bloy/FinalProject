@@ -10,6 +10,7 @@ using System.Web.Hosting;
 using System.Web.Http;
 using Newtonsoft.Json.Linq;
 using API.Model;
+using Common;
 
 namespace API.Controllers
 
@@ -35,12 +36,13 @@ namespace API.Controllers
             return new ApartmentBL().GetApartments();
         }
 
-        [HttpGet()]
-        [Route("Search/{city}/{numChildren}/{startDate:DateTime}/{endDate:DateTime}")]
-        public IEnumerable<ApartmentDTO> SearchApartments(string city, int? numChildren, DateTime? startDate, DateTime? endDate)
+        [HttpPost]
+        [ActionName("SearchApartments")]
+        //[Route("Search/{city}/{numChildren}/{startDate:DateTime}/{endDate:DateTime}")]
+        public IEnumerable<ApartmentDTO> SearchApartments(SearchAppeartment searchAppeartment)
         {
             
-            return new ApartmentBL().SearchApartments(city,numChildren,startDate,endDate);
+            return new ApartmentBL().SearchApartments(searchAppeartment);
         }
 
         [HttpGet()]

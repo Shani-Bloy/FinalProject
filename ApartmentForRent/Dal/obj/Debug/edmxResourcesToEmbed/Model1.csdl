@@ -21,6 +21,7 @@
     <NavigationProperty Name="RentorDetails" Relationship="Self.FK_Apartment_RentorDetails" FromRole="Apartment" ToRole="RentorDetails" />
     <NavigationProperty Name="ApartmentDetails" Relationship="Self.FK_ApartmentDetails_Apartment" FromRole="Apartment" ToRole="ApartmentDetails" />
     <NavigationProperty Name="Dates" Relationship="Self.FK_Dates_Apartment" FromRole="Apartment" ToRole="Dates" />
+    <Property Name="Img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="ApartmentDetails">
     <Key>
@@ -44,8 +45,8 @@
     </Key>
     <Property Name="DatesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ApartmentId" Type="Int32" />
-    <Property Name="StartDate" Type="DateTime" Precision="0" />
-    <Property Name="EndDate" Type="DateTime" Precision="0" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
     <Property Name="Status" Type="Boolean" />
     <NavigationProperty Name="Apartment" Relationship="Self.FK_Dates_Apartment" FromRole="Dates" ToRole="Apartment" />
   </EntityType>

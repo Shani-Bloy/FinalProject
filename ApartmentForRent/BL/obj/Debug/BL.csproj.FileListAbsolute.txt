@@ -150,3 +150,5 @@ D:\FinalProject\ApartmentForRent\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
 D:\FinalProject\ApartmentForRent\BL\obj\Debug\BL.csproj.CopyComplete
 D:\FinalProject\ApartmentForRent\BL\obj\Debug\BL.dll
 D:\FinalProject\ApartmentForRent\BL\obj\Debug\BL.pdb
+D:\FinalProject\ApartmentForRent\BL\bin\Debug\Common.dll
+D:\FinalProject\ApartmentForRent\BL\bin\Debug\Common.pdb

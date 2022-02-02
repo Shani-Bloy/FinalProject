@@ -352,8 +352,6 @@ D:\FinalProject\ApartmentForRent\API\API\bin\Dal.dll
 D:\FinalProject\ApartmentForRent\API\API\bin\BL.pdb
 D:\FinalProject\ApartmentForRent\API\API\bin\BL.dll.config
 D:\FinalProject\ApartmentForRent\API\API\bin\DTO.pdb
-D:\FinalProject\ApartmentForRent\API\API\bin\EntityFramework.xml
-D:\FinalProject\ApartmentForRent\API\API\bin\EntityFramework.SqlServer.xml
 D:\FinalProject\ApartmentForRent\API\API\bin\Microsoft.AspNetCore.Cors.xml
 D:\FinalProject\ApartmentForRent\API\API\bin\Microsoft.AspNetCore.Http.Abstractions.xml
 D:\FinalProject\ApartmentForRent\API\API\bin\Microsoft.AspNetCore.Http.Extensions.xml
@@ -391,3 +389,5 @@ D:\FinalProject\ApartmentForRent\API\API\obj\Debug\API.csproj.CoreCompileInputs.
 D:\FinalProject\ApartmentForRent\API\API\obj\Debug\API.csproj.CopyComplete
 D:\FinalProject\ApartmentForRent\API\API\obj\Debug\API.dll
 D:\FinalProject\ApartmentForRent\API\API\obj\Debug\API.pdb
+D:\FinalProject\ApartmentForRent\API\API\bin\Common.dll
+D:\FinalProject\ApartmentForRent\API\API\bin\Common.pdb

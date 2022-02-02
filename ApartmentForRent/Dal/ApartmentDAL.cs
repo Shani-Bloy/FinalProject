@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,17 +23,18 @@ namespace Dal
                 throw new Exception(" error!!!!", ex);
             }
         }
-        public IEnumerable<Apartment> SearchApartment(string city,int? numChildren,DateTime? startDate, DateTime? endDate)
+        public IEnumerable<Apartment> SearchApartment(SearchAppeartment searchAppeartment)
         {
             try
             {
                 using (ApartmentsForRentEntities ctx = new ApartmentsForRentEntities())
                 {
-                    var q = ctx.Dates.Include("Apartment").Where(x => ( x.Apartment.City == city) &&(x.Apartment.ApartmentId==x.ApartmentId) &&
-                                                                                  (x.Apartment.NumberOfBeds == numChildren || numChildren == null) &&
-                                                                                  (x.StartDate == startDate || startDate == null) &&
-                                                                                  (x.EndDate == endDate || endDate == null)
-                                                                                 ).ToList();
+                    var q = ctx.Dates.Include("Apartment").Where(x => ( x.Apartment.City == searchAppeartment.City) &&(x.Apartment.ApartmentId==x.ApartmentId) &&
+                                                                                  (searchAppeartment.NumChildren == null ||x.Apartment.NumberOfBeds == searchAppeartment.NumChildren) &&
+                                                                                  (searchAppeartment.StartDate == null || searchAppeartment.StartDate >= x.StartDate  ) &&
+                                                                                  (searchAppeartment.EndDate == null|| searchAppeartment.EndDate <= x.EndDate  ) &&
+                                                                                  (x.Status==true)
+                                                                                  ).ToList();
 
 
                     

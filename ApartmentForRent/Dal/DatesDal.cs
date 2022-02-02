@@ -16,7 +16,8 @@ namespace Dal
                 {
                     ApartmentId=dates.ApartmentId,
                     StartDate = dates.StartDate,
-                    EndDate = dates.EndDate
+                    EndDate = dates.EndDate,
+                    Status=true
                 });
 
                 ctx.SaveChanges();

@@ -9,6 +9,7 @@ import { AddApartmentComponent } from './components/add-apartment/add-apartment.
 import { ApartmentDetailsComponent } from './components/apartment-details/apartment-details.component';
 import { UpdateApartmentComponent } from './components/update-apartment/update-apartment.component';
 import { ApartmentsComponent } from './components/apartments/apartments.component';
+import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'apartments', component: ApartmentsComponent },
   { path: 'rentor', component: RentorComponent },
   { path: 'addApartment', component: AddApartmentComponent },
+  { path: 'Search', component: SearchComponent },
   { path: 'apartmentDetails/:id', component: ApartmentDetailsComponent },
   { path: 'updateApartment/:id', component: UpdateApartmentComponent },
 ];

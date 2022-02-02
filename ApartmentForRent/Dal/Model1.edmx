@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ApartmentsForRentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ApartmentsForRentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Apartment">
           <Key>
             <PropertyRef Name="ApartmentId" />
@@ -23,6 +23,7 @@
           <Property Name="Price" Type="nvarchar" MaxLength="50" />
           <Property Name="DiscountPercentages" Type="nvarchar" MaxLength="50" />
           <Property Name="NumberOfDiscountDays" Type="nvarchar" MaxLength="50" />
+          <Property Name="Img" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="ApartmentDetails">
           <Key>
@@ -44,8 +45,8 @@
           </Key>
           <Property Name="DatesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ApartmentId" Type="int" />
-          <Property Name="StartDate" Type="date" />
-          <Property Name="EndDate" Type="date" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
           <Property Name="Status" Type="bit" />
         </EntityType>
         <EntityType Name="Recommendations">
@@ -150,8 +151,7 @@
             <End Role="Recommendations" EntitySet="Recommendations" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ApartmentsForRentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -176,6 +176,7 @@
           <NavigationProperty Name="RentorDetails" Relationship="Self.FK_Apartment_RentorDetails" FromRole="Apartment" ToRole="RentorDetails" />
           <NavigationProperty Name="ApartmentDetails" Relationship="Self.FK_ApartmentDetails_Apartment" FromRole="Apartment" ToRole="ApartmentDetails" />
           <NavigationProperty Name="Dates" Relationship="Self.FK_Dates_Apartment" FromRole="Apartment" ToRole="Dates" />
+          <Property Name="Img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ApartmentDetails">
           <Key>
@@ -199,8 +200,8 @@
           </Key>
           <Property Name="DatesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ApartmentId" Type="Int32" />
-          <Property Name="StartDate" Type="DateTime" Precision="0" />
-          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
           <Property Name="Status" Type="Boolean" />
           <NavigationProperty Name="Apartment" Relationship="Self.FK_Dates_Apartment" FromRole="Dates" ToRole="Apartment" />
         </EntityType>
@@ -317,6 +318,7 @@
           <EntitySetMapping Name="Apartment">
             <EntityTypeMapping TypeName="ApartmentsForRentModel.Apartment">
               <MappingFragment StoreEntitySet="Apartment">
+                <ScalarProperty Name="Img" ColumnName="Img" />
                 <ScalarProperty Name="ApartmentId" ColumnName="ApartmentId" />
                 <ScalarProperty Name="RentorId" ColumnName="RentorId" />
                 <ScalarProperty Name="City" ColumnName="City" />

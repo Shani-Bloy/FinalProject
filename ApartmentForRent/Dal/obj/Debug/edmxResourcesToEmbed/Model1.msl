@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Apartment">
       <EntityTypeMapping TypeName="ApartmentsForRentModel.Apartment">
         <MappingFragment StoreEntitySet="Apartment">
+          <ScalarProperty Name="Img" ColumnName="Img" />
           <ScalarProperty Name="ApartmentId" ColumnName="ApartmentId" />
           <ScalarProperty Name="RentorId" ColumnName="RentorId" />
           <ScalarProperty Name="City" ColumnName="City" />

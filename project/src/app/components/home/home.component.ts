@@ -24,6 +24,13 @@ export class HomeComponent implements OnInit {
     .subscribe((apartments: any) => this.apartments = apartments);
   }
 
+  sendEmail(rentorId:number){
+    // this.apartmentService.sendEmail(rentorId)
+    // .subscribe((res: any) => console.log(res));
+  }
+
+  
+
   //   getApartmentDetails(id:number) {   
   //   this.apartmentService.getApartmentDetails(id).
   //   subscribe((apartmentDetails) => this.Apartment = apartmentDetails);

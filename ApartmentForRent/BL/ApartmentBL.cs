@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DTO;
 using Dal;
+using Common;
 
 namespace BL
 {
@@ -21,9 +22,9 @@ namespace BL
             }
 
         }
-        public IEnumerable<ApartmentDTO> SearchApartments(string city, int? numChildren, DateTime? startDate, DateTime? endDate)
+        public IEnumerable<ApartmentDTO> SearchApartments(SearchAppeartment searchAppeartment)
         {
-            var list = new Dal.ApartmentDAL().SearchApartment(city,numChildren,startDate,endDate);
+            var list = new Dal.ApartmentDAL().SearchApartment(searchAppeartment);
 
             foreach (var item in list)
             {

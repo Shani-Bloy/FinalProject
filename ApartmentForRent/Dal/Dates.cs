@@ -11,19 +11,15 @@ namespace Dal
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
-
+    
     public partial class Dates
     {
         public int DatesId { get; set; }
-
-        [ForeignKey("Apartment")]
         public Nullable<int> ApartmentId { get; set; }
         public Nullable<System.DateTime> StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
         public Nullable<bool> Status { get; set; }
-
-        
+    
         public virtual Apartment Apartment { get; set; }
     }
 }
